@@ -1,13 +1,21 @@
+
 <html>
 <body>
-<p>Hi</p>
+<p>Service ID:
+<div id="demo"></div>
+</p>
 </body>
-
 <script>
-//Change this to jquery later for SCA.
-var a = 'My Vulnerable Query String ' + window.location.search;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  const id = urlParams.get('id');
+  console.log(id);
+
+  if (id != undefined) {
+        const VulnerableVariable = 'id_' + id;
+        console.log(VulnerableVariable);
+        document.getElementById("demo").innerHTML = VulnerableVariable;
+  }
 </script>
-
-
 </html>
-
