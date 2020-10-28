@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Using Checkmarx CxFlow Action
-
 name: CxSAST and SCA on PR
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -27,14 +26,14 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.0-9.x
       with:
-        project: new_project_preset_test
+        project: preset_override_test
         team: '/CxServer'
-        preset: Checkmarx Express
+       # preset: Checkmarx Express
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
-        params: --cxflow.enabled-vulnerability-scanners=sast --cxflow.enabled-vulnerability-scanners=sca --sca.appUrl=https://sca.scacheckmarx.com --sca.apiUrl=https://api.scacheckmarx.com --sca.accessControlUrl=https://platform.checkmarx.net --sca.tenant=${{ secrets.CHECKMARX_SCA_ACCOUNT }} --sca.username=${{ secrets.CHECKMARX_SCA_USER }} --sca.password=${{ secrets.CHECKMARX_SCA_PASSWORD }} --checkmarx.incremental=false --checkmarx.scan-preset=Checkmarx Express
+        params: --cxflow.enabled-vulnerability-scanners=sast --cxflow.enabled-vulnerability-scanners=sca --sca.appUrl=https://sca.scacheckmarx.com --sca.apiUrl=https://api.scacheckmarx.com --sca.accessControlUrl=https://platform.checkmarx.net --sca.tenant=${{ secrets.CHECKMARX_SCA_ACCOUNT }} --sca.username=${{ secrets.CHECKMARX_SCA_USER }} --sca.password=${{ secrets.CHECKMARX_SCA_PASSWORD }} --checkmarx.incremental=false --checkmarx.scan-preset="Checkmarx Express"
     # Upload the Report for CodeQL/Security Alerts
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
