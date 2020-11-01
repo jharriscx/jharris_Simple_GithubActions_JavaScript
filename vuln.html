@@ -11,11 +11,22 @@
 
   const id = urlParams.get('id');
   console.log(id);
+  
+  //new vulnerable QP for branching example
+  const id = urlParams.get('pwn');
+  console.log(pwn);
 
   if (id != undefined) {
         const VulnerableVariable = 'id_' + id;
         console.log(VulnerableVariable);
         document.getElementById("demo").innerHTML = VulnerableVariable;
   }
+  
+  if (pwn != undefined) {
+        const VulnerableVariable = 'pwn_' + pwn;
+        console.log(VulnerableVariable);
+        document.getElementById("demo").innerHTML = VulnerableVariable;
+  }
+  
 </script>
 </html>
